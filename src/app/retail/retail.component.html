@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Management</title>
+    <link href="retail.component.css">
+</head>
+<body>
+    <h1 class="head1">Available Products</h1>
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Discount for Product</th>
+        </tr>
+        <tr>
+            <td>5001</td>
+            <td>Rs:20</td>
+            <td>No Discount</td>
+        </tr>
+        <tr>
+            <td>5002</td>
+            <td>Rs:25</td>
+            <td>No Discount</td>
+        </tr>
+        <tr>
+            <td>5003</td>
+            <td>Rs:30</td>
+            <td>No Discount</td>
+        </tr>
+        <tr>
+            <td>5004</td>
+            <td>Rs:40</td>
+            <td>20% Discount</td>
+        </tr>
+        <tr>
+            <td>5005</td>
+            <td>Rs:50</td>
+            <td>20% Discount</td>
+        </tr>
+    </table>
+    <div class="container" style="text-align:center">
+    <h1>Retail Store Billing</h1>
+    <div *ngIf="isAdd" class="selection">
+      <label for="itemId">Enter Item ID:     </label>
+      <input type="number" id="itemId"[(ngModel)]="itemId" required><br><br>
+      <label for="quantity">Enter Quantity: </label>
+      <input type="number" id="quantity"[(ngModel)]="quantity" required><br><br>
+      <button (click)="addItem()" class="btn">Add Item</button><br><br>
+      <label>Do you want to finish billing?</label>
+      <button (click)="finishBilling()" class="yes">Yes</button>
+    </div>
+
+    <div *ngIf="isAdd">
+        <h1>Your Cart</h1>
+      
+        <table>
+          <thead>
+            <tr>
+              <th>Item Id</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of cart">
+              <td>{{ item.itemId }}</td>
+              <td>{{ item.quantity }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+
+
+    <div *ngIf="!isAdd">
+      <h1>Final Bill</h1>
+    
+      <p *ngFor="let item of cart">
+        Item {{ item.itemId }} - Quantity: {{ item.quantity }}
+      </p>
+
+      <h3>Total Bill: Rs. {{ totalBill }}</h3>
+      <button (click)="resetBilling()">Start New Billing</button>
+    </div>
+</div>
+</body>
+</html>

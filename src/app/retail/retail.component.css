@@ -1,0 +1,54 @@
+table, th, td{
+    border: 1px solid;
+    margin-left: 30%;
+    border-collapse: collapse;
+    padding-bottom: 40px;
+    padding-left:40px;
+    padding-right: 40px;
+    text-align:center;
+    padding-top: 20px;
+    border-color: lightskyblue;
+  
+   
+  }
+  .head1{
+    margin-left: 40%;
+  }
+  th{
+    background-color: cadetblue;
+  }
+  h1{
+    color: orange;
+  }
+  body{
+    background-color:rgb(68, 67, 67);
+    overflow-y: hidden;
+  }
+  td{
+    color: white; 
+  }
+  td:hover{
+    color: slategrey;
+  } 
+  th{
+    color: black;
+    font-size: medium;
+  }
+ .selection{
+    text-align: center;
+    color: rgb(240, 240, 240);
+    font-size: large;
+ }
+ .btn{
+    background-color: darkorange;
+ }
+ .btn:hover{
+    background-color: rgb(253, 213, 138);
+ }
+ .yes{
+    background-color: blue;
+ }
+ .yes:hover{
+    background-color: cadetblue;
+
+ }
