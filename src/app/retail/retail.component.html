@@ -17,78 +17,30 @@
 </nav>
   <div *ngIf="filterItems.length > 0 ; else noItems"> 
     <h1 class="head1">Available Products</h1>
-    <table>
-        <tr>
+    <div>
+      <table>
+        <thead>
+          <tr>
             <th>Product</th>
             <th>Images</th>
             <th>Price</th>
             <th>Discount for Product</th>
             <th>Wishlist</th>
-        </tr>
-        <tr>
-            <td> Iphone</td>
-            <td><img src="/assets/image.png" height="200px" width="200px"></td>
-            <td>Rs:60000</td>
-            <td>20% Discount</td>
-        
-        </tr>
-        <tr>
-            <td>Laptop</td>
-            <td><img src="/assets/images.png" height="200px" width="200px"></td>
-            <td>Rs:100000</td>
-            <td>20% Discount</td>
-        </tr>
-        <tr>
-            
-          <td>Tablet</td>
-          <td><img src="/assets/tab.png" height="200px" width="200px"></td>
-          <td>Rs:50000</td>
-          <td>No Discount</td>
-        </tr>
-        <tr>
-          <td>Samsung</td>
-          <td><img src="/assets/samsung.png" height="200px" width="200px"></td>
-          <td>Rs:60000</td>
-          <td>No Discount</td>
-        </tr>
-        <tr>
-          <td>Vivo</td>
-          <td><img src="/assets/vivo.png" height="200px" width="200px"></td>
-          <td>Rs:16000</td>
-          <td>No Discount</td>
-        </tr>
-        <tr>
-          <td>Techno</td>
-          <td><img src="/assets/techno.png" height="200px" width="200px"></td>
-          <td>Rs:21000</td>
-          <td>No Discount</td>
-        </tr>
-        <tr>
-          <td>Realme</td>
-          <td><img src="/assets/realme.png" height="200px" width="200px"></td>
-          <td>Rs:25000</td>
-          <td>No Discount</td>
-        </tr>
-        <tr>
-          <td>Redme</td>
-          <td><img src="/assets/redme.png" height="200px" width="200px"></td>
-          <td>Rs:30000</td>
-          <td>No Discount</td>
-        </tr>
-        <tr>
-          <td>Gaming Laptop</td>
-          <td><img src="/assets/gaminglaptop.png" height="200px" width="200px"></td>
-          <td>Rs:120000</td>
-          <td>No Discount</td>
-        </tr>
-        <tr>
-          <td>Hp Laptop</td>
-          <td><img src="/assets/hplaptop.png" height="200px" width="200px"></td>
-          <td>Rs:60000</td>
-          <td>No Discount</td>
-        </tr>
-    </table>
-  </div> 
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.name }}</td>
+            <td><img [src]="product.image" alt="{{ product.name }}" height="200px" width="200px" /></td>
+            <td>Rs: {{ product.price }}</td>
+            <td>{{ product.discount }}</td>
+            <td><button (click)="addToWishlist(product)" class="wish">Add to Wishlist</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
 
   <ng-template #noItems>
     <p >No items found.</p>
@@ -134,7 +86,8 @@
       </p>
 
       <h3>Total Bill: Rs. {{ totalBill }}</h3>
-      <button (click)="resetBilling()">Start New Billing</button>
+      <!-- <button (click)="resetBilling()">Start New Billing</button> -->
+      <button (click)="Payment()">Ready for Payment</button>
     </div>
 </div>
 </body>

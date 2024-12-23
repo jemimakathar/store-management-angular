@@ -18,9 +18,12 @@ export class HomeComponent {
     this.router.navigate(['/about']);
   }
   navigateToFeedback(){
-    this.router.navigate(['./feedback'])
+    this.router.navigate(['/feedback'])
   }
-
+  navigateToWish()
+  {
+    this.router.navigate(['/wishlist'])
+  }
 
 }
 

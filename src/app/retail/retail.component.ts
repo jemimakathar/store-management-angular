@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { myitems,item} from '../interface.model';
 import { Router } from '@angular/router';
+import { DatashareService } from '../datashare.service';
+import { WishlistServiceService } from '../wishlist-service.service';
+
 @Component({
   selector: 'app-retail',
   templateUrl: './retail.component.html',
@@ -17,7 +20,7 @@ export class RetailComponent {
   filterItems:{id:string;price:number}[]=[]
   
 
-  constructor(private router:Router)
+  constructor (private router:Router,private sharedDataService:DatashareService,    private wishlistService:WishlistServiceService,)
   {
     this.items=item;
   }
@@ -52,12 +55,12 @@ export class RetailComponent {
   {
     this.isAdd = false;
   }
-  resetBilling() 
-  {
-    this.totalBill = 0;
-    this.cart = [];
-    this.isAdd = true;
-  }
+  // resetBilling() 
+  // {
+  //   this.totalBill = 0;
+  //   this.cart = [];
+  //   this.isAdd = true;
+  // }
   delete(itemId: string): void {
     const itemIndex = this.cart.findIndex((it) => it.itemId === itemId);
     if (itemIndex > -1) {
@@ -76,8 +79,38 @@ export class RetailComponent {
       }));
 }
 
-
-
+Payment()
+{
+  this.setTotalBill();
+  this.router.navigate(['/payment']);
 }
 
+setTotalBill(): void {
+   // You can calculate the total bill dynamically
+  this.sharedDataService.setTotalBill(this.totalBill);
+}
+
+
+
+
+  products = [
+    { name: 'Iphone', image: '/assets/image.png', price: 60000, discount: '20% Discount' },
+    { name: 'Laptop', image: '/assets/images.png', price: 100000, discount: '20% Discount' },
+    { name: 'Tablet', image: '/assets/tab.png', price: 50000, discount: 'No Discount' },
+    { name: 'Samsung', image: '/assets/samsung.png', price: 60000, discount: 'No Discount' },
+    { name: 'Vivo', image: '/assets/vivo.png', price: 16000, discount: 'No Discount' },
+    { name: 'Techno', image: '/assets/techno.png', price: 21000, discount: 'No Discount' },
+    { name: 'Realme', image: '/assets/realme.png', price: 25000, discount: 'No Discount' },
+    { name: 'Redme', image: '/assets/redme.png', price: 30000, discount: 'No Discount' },
+    { name: 'Gaming Laptop', image: '/assets/gaminglaptop.png', price: 120000, discount: 'No Discount' },
+    { name: 'Hp Laptop', image: '/assets/hplaptop.png', price: 60000, discount: 'No Discount' },
+  ];
+
+
+  addToWishlist(product: { name: string; price: number; discount: string; image: string }): void {
+    this.wishlistService.addToWishlist(product);
+    alert(`${product.name} added to wishlist!`);
+  }
+  
+}
 

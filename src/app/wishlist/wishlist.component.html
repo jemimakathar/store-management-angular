@@ -1,0 +1,25 @@
+<link href="wishlist.component.css">
+<h2>Your Wishlist</h2>
+<div *ngIf="wishlist.length; else noWishlist">
+  <table>
+    <tr>
+      <th>Product</th>
+      <th>Image</th>
+      <th>Price</th>
+      <th>Discount</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let item of wishlist">
+      <td>{{ item.name }}</td>
+      <td><img [src]="item.image" alt="{{ item.name }}" height="100" width="100" /></td>
+      <td>{{ item.price }}</td>
+      <td>{{ item.discount }}</td>
+      <td>
+        <button (click)="removeFromWishlist(item)">Remove</button>
+      </td>
+    </tr>
+  </table>
+</div>
+<ng-template #noWishlist>
+  <p>Your wishlist is empty!</p>
+</ng-template>
