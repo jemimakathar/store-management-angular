@@ -50,5 +50,23 @@ table, th, td{
  }
  .yes:hover{
     background-color: cadetblue;
-
  }
+ .delete{
+  background-color: red;
+ }
+ .search{
+  background-color: rgb(214, 213, 213);
+  height: 43px;
+  width:430px;
+ }
+ .btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.nav {
+  display:flex;
+}

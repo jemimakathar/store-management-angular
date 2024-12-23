@@ -1,37 +1,45 @@
 import { Component } from '@angular/core';
+import { myitems,item} from '../interface.model';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-retail',
   templateUrl: './retail.component.html',
   styleUrls: ['./retail.component.css']
 })
 export class RetailComponent {
-  items:{[key:number]:number}={
-    5001: 20,
-    5002: 25,
-    5003: 30,
-    5004: 40,
-    5005: 50
-  };
+  items:myitems=item;
   totalBill:number= 0;
-  cart:{itemId: number; quantity: number}[] = [];
+  cart:{itemId: string; quantity: number}[] = [];
   isAdd:boolean = true;
-  itemId:number|null=null;
+  itemId:string|null=null;
   quantity:number|null=null;
+  searchItem:string='';
+  filterItems:{id:string;price:number}[]=[]
+  
+
+  constructor(private router:Router)
+  {
+    this.items=item;
+  }
+
+
+  
   addItem() 
   {
     if (this.itemId && this.quantity && this.items[this.itemId]) 
       {
       const price = this.items[this.itemId];
-      const discount = (this.itemId===5004 || this.itemId===5005) ? 0.2 : 0;
+      const discount = this.itemId==='Laptop' || this.itemId=== 'Iphone' ? 0.2 : 0;
       const finalPrice = price - (price * discount);
       this.totalBill += finalPrice *this.quantity;
-      if((this.itemId>=5000 && this.itemId<5006) &&(this.quantity>0))
+      if(this.quantity>0)
       {
       this.cart.push({ itemId: this.itemId, quantity: this.quantity });
       this.itemId = null;
       this.quantity = null;
       }
-      else{
+      else
+      {
         alert("Invalid")
       }
      } 
@@ -50,7 +58,26 @@ export class RetailComponent {
     this.cart = [];
     this.isAdd = true;
   }
+  delete(itemId: string): void {
+    const itemIndex = this.cart.findIndex((it) => it.itemId === itemId);
+    if (itemIndex > -1) {
+      this.totalBill -= this.cart[itemIndex].quantity * this.items[itemId];
+      this.cart.splice(itemIndex, 1);
+    }
+  }
+  
+  onSearch(): void {
+    const term = this.searchItem.toLowerCase().trim();
+    this.filterItems = Object.keys(this.items)
+      .filter((key) => key.toLowerCase().includes(term))
+      .map((key) => ({
+        id: key,
+        price: this.items[key],
+      }));
 }
 
+
+
+}
 
 

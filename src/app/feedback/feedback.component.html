@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link href="feedback.component.css">
+</head>
+<body>
+    <h1>Feedback Form</h1>
+    <form [formGroup]="feedbackForm" (ngSubmit)="submitFeedback()">
+        <div>
+            <label for="name">Name:</label>
+            <input id="name" formControlName="name" type="text" placeholder="Your name">
+            <div *ngIf="feedbackForm.controls['name'].invalid && feedbackForm.controls['name'].touched">
+                <small>Name is Required</small>
+            </div>
+        </div>
+        <div>
+            <label for="name">Phone:</label>
+            <input id="phone" formControlName="phone" type="number" placeholder="Your Phone Number">
+            <div *ngIf="feedbackForm.controls['phone'].invalid && feedbackForm.controls['phone'].touched">
+                <small>Enter a valid Phone Number</small>
+            </div>
+        </div>
+        <div>
+            <label for="productFeedback">Product Feedback:</label>
+            <textarea id="productFeedback" formControlName="productFeedback" rows="4"></textarea>
+        </div>
+        <div>
+            <label for="websiteFeedback">Website Feedback:</label>
+            <textarea id="websiteFeedback" formControlName="websiteFeedback" rows="4" placeholder="Your thoughts about our website"></textarea>
+          </div>
+          <div>
+            <button type="submit" [disabled]="feedbackForm.invalid">Submit Feedback</button>
+          </div>
+        </form>
+        
+        <div *ngIf="submitted" class="center">
+          <h2>Thank you for your feedback!</h2>
+          <p><strong>Name:</strong> {{ feedback.name }}</p>
+          <p><strong>Phone:</strong> {{ feedback.phone }}</p>
+          <p><strong>Product Feedback:</strong> {{ feedback.productFeedback }}</p>
+          <p><strong>Website Feedback:</strong> {{ feedback.websiteFeedback }}</p>
+        </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link src="feedback.component.css">
+</head>
+<body>
+<h1>Feedback Form</h1>
+<form [formGroup]="feedbackForm" (ngSubmit)="submitFeedback()">
+  <div>
+    <label for="name">Name:</label>
+    <input id="name" formControlName="name" type="text" placeholder="Your name" />
+    <div *ngIf="feedbackForm.controls['name'].invalid && feedbackForm.controls['name'].touched">
+      <small>Name is required.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="phone">Phone:</label>
+    <input id="phone" formControlName="phone" type="text" placeholder="Your phone number" />
+    <div *ngIf="feedbackForm.controls['phone'].invalid && feedbackForm.controls['phone'].touched">
+      <small>Enter a valid phone number (10 digits).</small>
+    </div>
+  </div>
+  
+    <label for="productFeedback">Product Feedback:</label>
+    <textarea id="productFeedback" formControlName="productFeedback" rows="4" placeholder="Your thoughts about our products"></textarea>
+  
+
+  <div>
+    <label for="websiteFeedback">Website Feedback:</label>
+    <textarea id="websiteFeedback" formControlName="websiteFeedback" rows="4" placeholder="Your thoughts about our website"></textarea>
+  </div>
+
+  <div>
+    <button type="submit" [disabled]="feedbackForm.invalid">Submit Feedback</button>
+  </div>
+</form>
+
+<div *ngIf="submitted">
+  <h2>Thank you for your feedback!</h2>
+  <p><strong>Name:</strong> {{ feedback.name }}</p>
+  <p><strong>Phone:</strong> {{ feedback.phone }}</p>
+  <p><strong>Product Feedback:</strong> {{ feedback.productFeedback }}</p>
+  <p><strong>Website Feedback:</strong> {{ feedback.websiteFeedback }}</p>
+</div>
+</body>
+</html> -->

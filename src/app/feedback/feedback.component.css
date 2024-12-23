@@ -1,0 +1,49 @@
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input, textarea, button {
+    padding: 8px;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  button {
+    background-color: #5092da;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #d6cdcd;
+    cursor: not-allowed;
+  }
+  
+  small {
+    color: red;
+  }
+  h1,h2{
+    color: rgb(250, 167, 12);
+    text-align: center;
+  }
+  body{
+    background-color: rgb(65, 65, 63);
+  }
+  label,strong{
+    color: rgb(255, 120, 41);
+  }
+  .center{
+    text-align: center;
+  }
+  p{
+    color: antiquewhite;
+  }

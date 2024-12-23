@@ -7,75 +7,128 @@
     <link href="retail.component.css">
 </head>
 <body>
+
+<nav class="nav">
+  <div>
+    <input class="search"
+      type="text" placeholder="Search item ID..." [(ngModel)]="searchItem" (input)="onSearch()"/>
+  </div> 
+  <button class="btn" >search</button>
+</nav>
+  <div *ngIf="filterItems.length > 0 ; else noItems"> 
     <h1 class="head1">Available Products</h1>
     <table>
         <tr>
             <th>Product</th>
+            <th>Images</th>
             <th>Price</th>
             <th>Discount for Product</th>
+            <th>Wishlist</th>
         </tr>
         <tr>
-            <td>5001</td>
-            <td>Rs:20</td>
-            <td>No Discount</td>
+            <td> Iphone</td>
+            <td><img src="/assets/image.png" height="200px" width="200px"></td>
+            <td>Rs:60000</td>
+            <td>20% Discount</td>
+        
         </tr>
         <tr>
-            <td>5002</td>
-            <td>Rs:25</td>
-            <td>No Discount</td>
-        </tr>
-        <tr>
-            <td>5003</td>
-            <td>Rs:30</td>
-            <td>No Discount</td>
-        </tr>
-        <tr>
-            <td>5004</td>
-            <td>Rs:40</td>
+            <td>Laptop</td>
+            <td><img src="/assets/images.png" height="200px" width="200px"></td>
+            <td>Rs:100000</td>
             <td>20% Discount</td>
         </tr>
         <tr>
-            <td>5005</td>
-            <td>Rs:50</td>
-            <td>20% Discount</td>
+            
+          <td>Tablet</td>
+          <td><img src="/assets/tab.png" height="200px" width="200px"></td>
+          <td>Rs:50000</td>
+          <td>No Discount</td>
+        </tr>
+        <tr>
+          <td>Samsung</td>
+          <td><img src="/assets/samsung.png" height="200px" width="200px"></td>
+          <td>Rs:60000</td>
+          <td>No Discount</td>
+        </tr>
+        <tr>
+          <td>Vivo</td>
+          <td><img src="/assets/vivo.png" height="200px" width="200px"></td>
+          <td>Rs:16000</td>
+          <td>No Discount</td>
+        </tr>
+        <tr>
+          <td>Techno</td>
+          <td><img src="/assets/techno.png" height="200px" width="200px"></td>
+          <td>Rs:21000</td>
+          <td>No Discount</td>
+        </tr>
+        <tr>
+          <td>Realme</td>
+          <td><img src="/assets/realme.png" height="200px" width="200px"></td>
+          <td>Rs:25000</td>
+          <td>No Discount</td>
+        </tr>
+        <tr>
+          <td>Redme</td>
+          <td><img src="/assets/redme.png" height="200px" width="200px"></td>
+          <td>Rs:30000</td>
+          <td>No Discount</td>
+        </tr>
+        <tr>
+          <td>Gaming Laptop</td>
+          <td><img src="/assets/gaminglaptop.png" height="200px" width="200px"></td>
+          <td>Rs:120000</td>
+          <td>No Discount</td>
+        </tr>
+        <tr>
+          <td>Hp Laptop</td>
+          <td><img src="/assets/hplaptop.png" height="200px" width="200px"></td>
+          <td>Rs:60000</td>
+          <td>No Discount</td>
         </tr>
     </table>
+  </div> 
+
+  <ng-template #noItems>
+    <p >No items found.</p>
+  </ng-template>
+
     <div class="container" style="text-align:center">
     <h1>Retail Store Billing</h1>
     <div *ngIf="isAdd" class="selection">
-      <label for="itemId">Enter Item ID:     </label>
-      <input type="number" id="itemId"[(ngModel)]="itemId" required><br><br>
+      <label for="itemId">Enter Item :     </label>
+      <input type="text" id="itemId"[(ngModel)]="itemId" required><br><br>
       <label for="quantity">Enter Quantity: </label>
       <input type="number" id="quantity"[(ngModel)]="quantity" required><br><br>
       <button (click)="addItem()" class="btn">Add Item</button><br><br>
-      <label>Do you want to finish billing?</label>
+      <label>Ready for Billing?</label>
       <button (click)="finishBilling()" class="yes">Yes</button>
     </div>
 
+    
     <div *ngIf="isAdd">
         <h1>Your Cart</h1>
-      
-        <table>
+        <table *ngFor="let item of cart">
           <thead>
             <tr>
               <th>Item Id</th>
               <th>Quantity</th>
+              <th>Remove from Cart</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of cart">
+            <tr >
               <td>{{ item.itemId }}</td>
               <td>{{ item.quantity }}</td>
+              <td><button (click)="delete(item.itemId)" class="delete">Delete</button></td>
             </tr>
           </tbody>
         </table>
-      </div>
-      
-
-
+    </div>
     <div *ngIf="!isAdd">
       <h1>Final Bill</h1>
-    
+
       <p *ngFor="let item of cart">
         Item {{ item.itemId }} - Quantity: {{ item.quantity }}
       </p>
