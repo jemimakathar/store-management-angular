@@ -6,7 +6,15 @@
   <title>Login Page</title>
   <link rel="stylesheet" href="index.component.css">
 </head>
+<div class="topnav">
+  <a  routerLink="/retail" >View Products</a>
+  <a  routerLink="/about" >About-Us</a>
+  <a  routerLink="/feedback">Feedback</a>
+  <a  routerLink="/wishlist" >Wishlist</a>
+  <a  class="activ" routerLink="#index">Login</a>
+</div>
 <body>
+
   <div class="login-container">
     <h1>Login</h1>
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm">

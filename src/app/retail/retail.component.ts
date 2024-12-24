@@ -20,7 +20,7 @@ export class RetailComponent {
   filterItems:{id:string;price:number}[]=[]
   
 
-  constructor (private router:Router,private sharedDataService:DatashareService,    private wishlistService:WishlistServiceService,)
+  constructor (private router:Router,private sharedDataService:DatashareService,private wishlistService:WishlistServiceService,)
   {
     this.items=item;
   }
@@ -79,6 +79,7 @@ export class RetailComponent {
       }));
 }
 
+// payment
 Payment()
 {
   this.setTotalBill();
@@ -106,7 +107,7 @@ setTotalBill(): void {
     { name: 'Hp Laptop', image: '/assets/hplaptop.png', price: 60000, discount: 'No Discount' },
   ];
 
-
+// Wishlist
   addToWishlist(product: { name: string; price: number; discount: string; image: string }): void {
     this.wishlistService.addToWishlist(product);
     alert(`${product.name} added to wishlist!`);

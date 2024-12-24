@@ -1,4 +1,10 @@
-<link href="wishlist.component.css">
+<div class="topnav">
+  <a  routerLink="/retail" >View Products</a>
+  <a  routerLink="/about" >About-Us</a>
+  <a  routerLink="/feedback">Feedback</a>
+  <a  class="active" routerLink="#wishlist" >Wishlist</a>
+  <a class="log" routerLink="/index">Login</a>
+</div>
 <h2>Your Wishlist</h2>
 <div *ngIf="wishlist.length; else noWishlist">
   <table>

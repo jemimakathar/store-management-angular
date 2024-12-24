@@ -9,9 +9,9 @@ import { PaymentComponent } from './payment/payment.component';
 import { PaymentSuccessComponent } from './payment-success/payment-success.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 const routes: Routes = [
-  { path: '', redirectTo: '/index', pathMatch: 'full' },
-  { path: 'index', component:IndexComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component:HomeComponent },
+  { path: 'index', component:IndexComponent },
   { path: 'retail', component:RetailComponent },
   {path:'about',component:AboutComponent},
   {path:'feedback',component:FeedbackComponent},

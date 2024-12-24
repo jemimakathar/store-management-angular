@@ -7,9 +7,17 @@
     <link href="retail.component.css">
 </head>
 <body>
+  <div class="topnav">
+    <a  class="active" routerLink="#retail" >View Products</a>
+    <a  routerLink="/about" >About-Us</a>
+    <a  routerLink="/feedback">Feedback</a>
+    <a  routerLink="/wishlist" >Wishlist</a>
+    <a class="log" routerLink="/index">Login</a>
+</div>
 
 <nav class="nav">
   <div>
+    <br>
     <input class="search"
       type="text" placeholder="Search item ID..." [(ngModel)]="searchItem" (input)="onSearch()"/>
   </div> 

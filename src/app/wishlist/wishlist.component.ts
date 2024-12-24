@@ -11,6 +11,7 @@ export class WishlistComponent {
   constructor(private wishlistService:WishlistServiceService) {}
 
   ngOnInit(): void {
+    // The subscribe() method is used to start the execution of an Observable.
     this.wishlistService.wishlist$.subscribe((items) => {
       this.wishlist = items;
     });

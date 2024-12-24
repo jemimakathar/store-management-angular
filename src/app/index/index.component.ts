@@ -10,6 +10,7 @@ export class IndexComponent {
   username: string = '';
   password: string = '';
   errorMessage: string = '';
+  
 
   constructor(private router:Router)
   {
